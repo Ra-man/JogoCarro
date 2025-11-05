@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tiles/Tiles.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://Cars/CarScenes/FlatDuo.tscn" type="PackedScene" id=2]
+
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PackedInt32Array( 1, 65535, 536870914, 65529, 65535, 538312705, 65533, 65535, 536870915 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="HatchbackSports" parent="." instance=ExtResource( 2 )]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54933, 0 )
+Player_ID = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 9, 4, 0 )
+current = true

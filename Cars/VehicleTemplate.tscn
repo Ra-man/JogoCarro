@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://CarsModels/Wheels/WheelDefault.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Cars/VehicleTemplate.gd" type="Script" id=2]
+[ext_resource path="res://Cars/WheelSpawners.gd" type="Script" id=3]
+
+[sub_resource type="CylinderShape3D" id=1]
+radius = 0.297025
+height = 0.30877
+
+[node name="VehicleTemplate" type="VehicleBody3D"]
+mass = 1600.0
+script = ExtResource( 2 )
+
+[node name="WheelFrontRight" type="VehicleWheel3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.474, 0.077144, 0.66 )
+use_as_steering = true
+wheel_radius = 0.3
+wheel_rest_length = 0.01
+suspension_travel = 1.0
+suspension_stiffness = 125.0
+suspension_max_force = 6400.0
+
+[node name="WheelDefault" type="MeshInstance3D" parent="WheelFrontRight"]
+transform = Transform3D( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0.147197, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="WheelFrontLeft" type="VehicleWheel3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.474, 0.077, 0.66 )
+use_as_steering = true
+wheel_radius = 0.3
+wheel_rest_length = 0.01
+suspension_travel = 1.0
+suspension_stiffness = 125.0
+suspension_max_force = 6400.0
+
+[node name="WheelDefault" type="MeshInstance3D" parent="WheelFrontLeft"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="WheelBackLeft" type="VehicleWheel3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.474, 0.077, -0.665 )
+use_as_traction = true
+wheel_radius = 0.3
+wheel_rest_length = 0.01
+suspension_travel = 1.0
+suspension_stiffness = 125.0
+suspension_max_force = 6400.0
+
+[node name="WheelDefault" type="MeshInstance3D" parent="WheelBackLeft"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="WheelBackRight" type="VehicleWheel3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.474, 0.077144, -0.664786 )
+use_as_traction = true
+wheel_radius = 0.3
+wheel_rest_length = 0.01
+suspension_travel = 1.0
+suspension_stiffness = 125.0
+suspension_max_force = 6400.0
+
+[node name="WheelDefault" type="MeshInstance3D" parent="WheelBackRight"]
+transform = Transform3D( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0.147197, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="WheelSpawners" type="Node3D" parent="."]
+script = ExtResource( 3 )
+
+[node name="DeadWheel1" type="RigidBody3D" parent="WheelSpawners"]
+transform = Transform3D( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.62681, 0.083474, 0.656864 )
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WheelSpawners/DeadWheel1"]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WheelSpawners/DeadWheel1"]
+transform = Transform3D( -4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 0.145967, -2.98023e-08, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="DeadWheel2" type="RigidBody3D" parent="WheelSpawners"]
+transform = Transform3D( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.627, 0.083, 0.657 )
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WheelSpawners/DeadWheel2"]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WheelSpawners/DeadWheel2"]
+transform = Transform3D( -4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 0.145967, -2.98023e-08, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="DeadWheel3" type="RigidBody3D" parent="WheelSpawners"]
+transform = Transform3D( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.62681, 0.083474, -0.676139 )
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WheelSpawners/DeadWheel3"]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WheelSpawners/DeadWheel3"]
+transform = Transform3D( -4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 0.145967, -2.98023e-08, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="DeadWheel4" type="RigidBody3D" parent="WheelSpawners"]
+transform = Transform3D( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.627, 0.083, -0.676003 )
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WheelSpawners/DeadWheel4"]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WheelSpawners/DeadWheel4"]
+transform = Transform3D( -4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 0.145967, -2.98023e-08, 0 )
+shape = SubResource( 1 )
+disabled = true
